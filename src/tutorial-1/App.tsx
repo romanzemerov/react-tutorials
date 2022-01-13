@@ -10,7 +10,7 @@ export const dateFormatter = new Intl.DateTimeFormat('ru', {
 const App: FC = () => {
   return (
     <div className="App">
-      <Profile name="Alex" registeredAt={new Date('05-10-2010')} />
+      <Profile name="Alex Pupkin" registeredAt={new Date('05-10-2010')} />
     </div>
   );
 };
