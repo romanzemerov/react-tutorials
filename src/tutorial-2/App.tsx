@@ -22,9 +22,7 @@ const App: FC = () => {
     console.log({ email, password });
     [email, password] = ['', ''];
 
-    // Вообще не понял этого прикола от TS
-    // @ts-ignore
-    e.target.reset();
+    e.currentTarget.reset();
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
