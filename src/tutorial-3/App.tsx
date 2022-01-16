@@ -7,6 +7,8 @@ export type TabType = {
   content: string;
 };
 
+export type tabClickHandlerType = (id: number) => void;
+
 const tabs: TabType[] = [
   {
     title: `Сколько всего мест в доме?`,
@@ -36,7 +38,7 @@ const tabs: TabType[] = [
 
 const App = () => {
   const [activeTabID, setActiveTabID] = useState(0);
-  const tabClickHandler = (id: number) => {
+  const tabClickHandler: tabClickHandlerType = (id) => {
     setActiveTabID(id);
   };
 

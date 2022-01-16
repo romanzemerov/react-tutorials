@@ -1,9 +1,9 @@
-import { TabType } from './App';
+import { tabClickHandlerType, TabType } from './App';
 
 type TabProps = {
   active: boolean;
   id: number;
-  onClick: Function;
+  onClick: tabClickHandlerType;
 } & TabType;
 
 export const Tab = ({ id, title, content, active, onClick }: TabProps) => {
