@@ -82,19 +82,17 @@ const App = () => {
     setPhrases([]);
   };
 
-  const getPhrasesMarkup = (list: string[]) => {
-    return (
-      <div className="list">
-        {list.map((el, index) => {
-          return <Phrase key={index} text={el} />;
-        })}
-      </div>
-    );
-  };
-
   return (
     <div className="wrapper">
-      {phrases.length === 0 ? <EmptyBlock /> : getPhrasesMarkup(phrases)}
+      {phrases.length === 0 ? (
+        <EmptyBlock />
+      ) : (
+        <div className="list">
+          {phrases.map((phrase, index) => {
+            return <Phrase key={index} text={phrase} />;
+          })}
+        </div>
+      )}
 
       <button className="btn btn_generate" onClick={generateButtonHandler}>
         Сгенерировать
