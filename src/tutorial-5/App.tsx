@@ -2,51 +2,8 @@ import './App.css';
 import { useState } from 'react';
 import { EmptyBlock } from './components/EmptyBlock';
 import { Phrase } from './components/Phrase';
-
-const adjectivesArr = [
-  'абсолютный',
-  'адский',
-  'азартный',
-  'активный',
-  'ангельский',
-  'астрономический',
-  'баснословный',
-  'безбожный',
-  'безбрежный',
-  'безвозвратный',
-  'безграничный',
-  'бездонный',
-  'бездушный',
-  'безжалостный',
-  'замечательно',
-  'замечательный',
-  'записной',
-  'запредельный',
-  'заядлый',
-  'звериный',
-  'зверский',
-  'зеленый',
-  'злой',
-  'злостный',
-  'значительный',
-  'неоспоримый',
-  'неотразимый',
-  'неоценимый',
-  'непередаваемый',
-];
-
-const nounsArr = [
-  'лгун',
-  'день',
-  'конь',
-  'олень',
-  'человек',
-  'программист',
-  'ребёнок',
-  'конец',
-  'город',
-  'дурак',
-];
+import { adjectivesList } from './static/adjectives';
+import { nounsList } from './static/nouns';
 
 const getRandomInt = (min: number, max: number) => {
   [min, max] = [Math.ceil(min), Math.floor(max)];
@@ -54,17 +11,17 @@ const getRandomInt = (min: number, max: number) => {
 };
 
 const generatePhrase = (adjectives: string[], nouns: string[]) => {
-  let copyAdjectivesArr = [...adjectivesArr];
+  let copyAdjectivesList = [...adjectivesList];
 
-  const firstAdjective = `${copyAdjectivesArr.splice(
-    getRandomInt(0, copyAdjectivesArr.length - 1),
+  const firstAdjective = `${copyAdjectivesList.splice(
+    getRandomInt(0, copyAdjectivesList.length - 1),
     1,
   )}`;
-  const secondAdjective = `${copyAdjectivesArr.splice(
-    getRandomInt(0, copyAdjectivesArr.length - 1),
+  const secondAdjective = `${copyAdjectivesList.splice(
+    getRandomInt(0, copyAdjectivesList.length - 1),
     1,
   )}`;
-  const noun = nouns[getRandomInt(0, nounsArr.length - 1)];
+  const noun = nouns[getRandomInt(0, nounsList.length - 1)];
 
   return `${firstAdjective} ${secondAdjective} ${noun}`;
 };
@@ -74,7 +31,7 @@ const App = () => {
 
   const generateButtonHandler = () => {
     setPhrases((prev) => {
-      return [...prev, generatePhrase(adjectivesArr, nounsArr)];
+      return [...prev, generatePhrase(adjectivesList, nounsList)];
     });
   };
 
@@ -84,7 +41,7 @@ const App = () => {
 
   return (
     <div className="wrapper">
-      {phrases.length === 0 ? (
+      {!phrases.length ? (
         <EmptyBlock />
       ) : (
         <div className="list">
