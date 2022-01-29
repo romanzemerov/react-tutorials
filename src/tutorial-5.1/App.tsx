@@ -15,9 +15,7 @@ const App = () => {
 
   const deleteCommentHandler = (id: string) => {
     setComments((prev) => {
-      const idx = prev.findIndex((comment) => (comment.id = id));
-
-      return [...prev.slice(0, idx), ...prev.slice(idx + 1)];
+      return prev.filter((review) => review.id !== id);
     });
   };
 
