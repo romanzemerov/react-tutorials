@@ -57,7 +57,7 @@ export default function App() {
         </Card>
       )}
 
-      {paths[1] === 'post' && paths[2] && (
+      {paths.includes('post') && paths[2] && (
         <div>
           <h1>Статья №{paths[2]}</h1>
           <p>
