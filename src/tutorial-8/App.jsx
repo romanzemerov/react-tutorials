@@ -24,7 +24,7 @@ function App() {
         'https://62053dd1161670001741b6d3.mockapi.io/api/v1/users',
       );
 
-      if (!res.ok && res.status === 200) {
+      if (!res.ok || res.status !== 200) {
         throw new Error('Не смогли загрузить юзеров');
       }
 
